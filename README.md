@@ -1,2 +1,2 @@
 # Competitive
-In this repo i save all the files and projects about competitive programming
+In this repo i'll save all the files and projects about competitive programming
