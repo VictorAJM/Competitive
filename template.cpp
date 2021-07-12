@@ -6,8 +6,8 @@
 
 using namespace std;
 
-const int mod = 1e9+7;
-const int N = 2e5+5;
+const int mod;
+const int N;
 
 typedef long long ll;
 typedef pair<int,int> ii;
