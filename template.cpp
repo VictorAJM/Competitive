@@ -6,8 +6,8 @@
 
 using namespace std;
 
-const int mod;
-const int N;
+const int mod=0;
+const int N=0;
 
 typedef long long ll;
 typedef pair<int,int> ii;

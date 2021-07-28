@@ -17,6 +17,7 @@ typedef vector<ii> vii;
 void solve()
 {
 
+    return;
 }
 
 int main()
