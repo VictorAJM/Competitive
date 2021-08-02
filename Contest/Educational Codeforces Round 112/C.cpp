@@ -13,7 +13,7 @@ typedef long long ll;
 typedef pair<int,int> ii;
 typedef vector<int> vi;
 typedef vector<ii> vii;
-ll n,a[2][N],dp[2][N][2];
+ll n,a[3][N],dp[3][N][3];
 void solve()
 {
     cin >> n;
@@ -22,7 +22,7 @@ void solve()
     for (int i=1;i<=2;i++) for (int j=1;j<=n;j++) dp[i][j][1] = dp[i][j-1][1] + a[i][j];
     for (int i=1;i<=2;i++) for (int j=n;j>=1;j--) dp[i][j][2] = dp[i][j+1][2] + a[i][j];
     ll A,B;
-    B = 2000000000;
+    B = 200000000000ll;
     for (int j=1;j<=n;j++) {
         ll k = max(dp[2][j-1][1],dp[1][j+1][2]);
         ll p = dp[1][j][1] + dp[2][j][2];
@@ -33,6 +33,7 @@ void solve()
         }
     }
     cout <<B <<"\n";
+    return;
 }
 
 int main()
