@@ -28,13 +28,9 @@ void solve()
         cout << 0<<"\n";
         return;
     }
-    if (x1 <= w) {
-        if ((w-x1) <= p) {
-            r = min(r,w-x1);
-            T = true;
-        }
-    }
+    if (x1 <= w) if ((w-x1) <= p) {r = min(r,w-x1);T = true;}
     if (y1 <= h) if ((h-y1) <= q) { T = true; r = min(r,h-y1);}
+    
     if (!T) cout <<"-1\n";
     else cout <<r<<"\n";
 }
