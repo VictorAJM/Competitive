@@ -13,30 +13,34 @@ typedef long long ll;
 typedef pair<int,int> ii;
 typedef vector<int> vi;
 typedef vector<ii> vii;
-int n,m,a[N],b[N],f[N];
-int ok;
-priority_queue<ii,vector<ii>,greater<ii>> pq;
+int n,m,a[N],b[N],f[32],cnt;
 void solve()
 {
     cin >> n >> m;
     for (int i=0;i<n;i++) cin >> a[i];
     for (int i=0;i<m;i++) cin >> b[i];
-
+    sort(a,a+n);
     for (int i=0;i<m;i++) f[b[i]]++;
-    for (int i=30;i>=0;i--) {
-        while (!pq.empty()) pq.pop();
-        for (int j=0;j<n;j++) if (a[j]>=(1<<i)) pq.push({a[j],j});
-        while (f[i]--) {
-            if (!pq.empty()) {
-                ok++;
-                ii x = pq.top();
-                pq.pop();
-                a[x.S] -= (1<<i);
-                if (a[x.S]>=(1<<i)) pq.push({a[x.S],x.S});
-            }
+    for (int i=0;i<=30;i++) {
+        int k = f[i];
+        for (int j=0;j<n;j++) if (a[j]%2==1 && k>0) {
+            a[j]--;
+            cnt++;
+            k--;
+        }
+        for (int j=0;j<n;j++) while (k>0 && a[j] >0) {
+            a[j]--;
+            cnt++;
+            k--;
+        }
+        if (k>0) {
+            cout << cnt << "\n";
+            return;
+        } else {
+            for (int j=0;j<n;j++) a[j] /= 2;
         }
     }
-    cout << ok;
+    cout << cnt;
 }
 
 int main()

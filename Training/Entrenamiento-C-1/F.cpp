@@ -13,101 +13,100 @@ typedef long long ll;
 typedef pair<ll,ll> ii;
 typedef vector<ll> vi;
 typedef vector<ii> vii;
-ll n,a[N];
 map<ll,ll> h;
-set<ll> s;
 bool t[N];
-bool primo(ll u)
-{
-    for (ll i=2;i*i<=u;i++) if (u%i==0) return false;
-    return true;
-}
 vi g;
-    map<ll,ll> d;
-    set<ll> as;
+long long mysqrt(long long x) {
+  assert(x > 0);
+  long long y = (long long) (sqrtl((long double) x) + 0.5);
+  while (y * y < x) {
+    y++;
+  }
+  while (y * y > x) {
+    y--;
+  }
+  if (y * y == x) {
+    return y;
+  }
+  return -1;
+}
+ 
+long long mycrt(long long x) {
+  assert(x > 0);
+  long long y = (long long) (powl((long double) x, 1.0 / 3.0) + 0.5);
+  while (y * y * y < x) {
+    y++;
+  }
+  while (y * y * y > x) {
+    y--;
+  }
+  if (y * y * y == x) {
+    return y;
+  }
+  return -1;
+}
 void solve()
 {
-    cin >> n;
-    for (ll i=0;i<n;i++) cin >> a[i];
-    for (ll i=0;i<n;i++)if (a[i] != 1) {
-        ll x = sqrt(a[i]);
-        if (x*x == a[i]) {
-            if (primo(x)) {
-                h[x]+=2;
-                s.insert(x);
-            } else {
-                ll y = sqrt(x);
-                h[y]+=4;
-                s.insert(y);
-            }
-        } else {
-            ll z = cbrt(a[i]);
-            if (z*z*z == a[i]) {
-                h[z] += 3;
-                s.insert(z);
-            } else {
-                g.push_back(a[i]);
-            }
+  int n;
+  cin >> n;
+  
+  for (int i = 0; i < n; i++) {
+    long long a;
+    cin >> a;
+    long long d = mycrt(a);
+    if (d != -1) {
+      h[d] += 3;
+      continue;
+    }
+    long long b = mysqrt(a);
+    if (b != -1) {
+      long long c = mysqrt(b);
+      if (c != -1) {
+        h[c] += 4;
+      } else {
+        h[b] += 2;
+      }
+    } else {
+      g.push_back(a);
+    }
+  }
+    n = g.size();
+    for (int i=0;i<n;i++) for (int j=i+1;j<n;j++) if (g[i] != g[j]) {
+        ll pp = __gcd(g[i],g[j]);
+        if (pp>1) {
+            h[pp] = h[pp];
         }
     }
-    // only pq
-    
-    ll nm = g.size();
-    bool ty = true;
-    while (ty) {
-        ty = false;
-        for (ll i=0;i<nm;i++) {
-            for (ll u : s) {
-                if (g[i]%u==0) {
-                    h[u]++;
-                    if (s.count(g[i]/u) == 0) {
-                        ty = true;
-                        s.insert(g[i]/u);
-                    }
-                    h[g[i]/u]++;
-                    g[i] = 1;
-                }
+    ll res = 1;
+    vi se;
+    for (auto v : h) se.push_back(v.F);
+    for (int i=0;i<n;i++) {
+        bool xs = false;
+        for (auto v : se) {
+            if (g[i]%v == 0) {
+                h[v]++;
+                h[g[i]/v]++;
+                xs = true;
+                break;
             }
         }
-    }
-
-    vi f;
-    for (ll u : g) if (u>1) f.push_back(u);
-
-    for (ll u : f) { as.insert(u); d[u]++; }
-    g.clear();
-    for (ll u : as) g.push_back(u);
-    nm = g.size();
-    ty = true;
-                        set<ll> op;
-    while (ty) {
-        ty = false;
-        for (ll i=0;i<nm;i++) {
-            for (ll j=i+1;j<nm;j++) {
-                ll x = __gcd(g[i],g[j]);
-                if (x>1) {
-
-                    op.insert(x);
-                    op.insert(g[i]/x);
-                    op.insert(g[j]/x);
-                }
-            }
+        if (!xs) {
+            h[g[i]]--;
         }
     }
-    for (ll i=0;i<nm;i++) for (ll u : op) if (g[i]%u==0    ) h[u] += d[g[i]];
-    for (ll i=0;i<nm;i++) for (ll u : op) if (g[i]%u==0) g[i] =1;
-    ll res = 1ll;
-    for (ll i=0;i<nm;i++) if (g[i] > 1) {
-        d[g[i]]++;
-        ll gps = d[g[i]]*d[g[i]];
-        gps %= mod;
-        res *= gps;
-        res %= mod;
-    }
-    for (ii v : h) {
-        v.S++;
-        res *= v.S;
-        res %= mod;
+    for (auto v : h) {
+        if (v.S > 0) {
+                ll aux = 1 + v.S;
+                res *= aux;
+                res %= mod;
+         } else {
+             ll aux = 1 - v.S;
+             res *= aux;
+             res %= mod;
+             res *= aux;
+             res %= mod;
+             
+        }
     }
     cout << res << endl;
     return ;
