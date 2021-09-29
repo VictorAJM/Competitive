@@ -1,5 +1,10 @@
-
-// Hasta donde tope
+// Problem: D. The Strongest Build
+// Contest: Codeforces - Educational Codeforces Round 114 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1574/problem/D
+// Memory Limit: 256 MB
+// Time Limit: 3000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
 
 #include <bits/stdc++.h>
 
@@ -33,17 +38,36 @@ typedef vector<i2> vii;
 typedef vector<ll> vl;
 typedef pair<ll,ll> l2;
 typedef long double ld;
-
+typedef pair<l2,ll> l3;
 const int mod=0;
-const int N=0;
+const int N=2e5;
 const ld EPS = 1e-9;
 
+ll a[N],n,m,cnt[N],sum,res[N],p;
+l3 b[N];
 void solve(int Case)
 {
-
+	cin >> n;
+	forn(i,0,n) cin >> a[i];
+	sort(a,a+n);
+	cin >> m;
+	forn(i,0,m) {cin >> b[i].F.F >> b[i].F.S; b[i].S = i; }
+	sort(b,b+m);
+	forn(i,0,n) sum += a[i];
+	forn(i,0,n) cnt[i] = sum - a[i];
+	forn(i,0,m) {
+		wh (p+1<n && a[p] < b[i].F.F) p++;
+		ll k = max(0ll,b[i].F.F-a[p]) + max(b[i].F.S-cnt[p],0ll);
+		if (p>0) {
+			ll l = max(0ll,b[i].F.F-a[p-1]) + max(b[i].F.S-cnt[p-1],0ll);
+			k = min(k,l);
+		}
+		res[b[i].S] = k;
+	}
+	forn(i,0,m) cout << res[i] << "\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(ONLYONE);
 //TEST
 //ALL(n)
 //ONLYONE

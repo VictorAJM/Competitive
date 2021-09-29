@@ -1,3 +1,11 @@
+// Problem: A. Casimir's String Solitaire
+// Contest: Codeforces - Codeforces Round #744 (Div. 3)
+// URL: https://codeforces.com/contest/1579/problem/A
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 
 // Hasta donde tope
 
@@ -40,10 +48,14 @@ const ld EPS = 1e-9;
 
 void solve(int Case)
 {
-
+	string n; cin >> n;
+	int cnt = 0;
+	for (char u : n) if (u == 'B') cnt++;
+	if (cnt == sz(n) - cnt) cout << "YES\n";
+	else cout << "No\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(TEST);
 //TEST
 //ALL(n)
 //ONLYONE

@@ -1,3 +1,11 @@
+// Problem: E1. Permutation Minimization by Deque
+// Contest: Codeforces - Codeforces Round #744 (Div. 3)
+// URL: https://codeforces.com/contest/1579/problem/E1
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 
 // Hasta donde tope
 
@@ -35,15 +43,31 @@ typedef pair<ll,ll> l2;
 typedef long double ld;
 
 const int mod=0;
-const int N=0;
+const int N=2e5+5;
 const ld EPS = 1e-9;
-
+int n,a[N],pos[N];
+void P(int u,int num)
+{
+	if (u > n) re;
+	if (pos[u] < num) {
+		cout << a[pos[u]] << " ";
+		P(u+1,pos[u]);
+		forn(j,pos[u]+1,num) cout << a[j] << " ";
+	} else {
+		P(u+1,num);
+	}
+}
 void solve(int Case)
 {
-
+	cin >> n;
+	forn(i,0,n) cin >> a[i];
+	forn(i,0,n) pos[a[i]] = i;
+	int p = n;
+	P(1,p);
+	cout << "\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(TEST);
 //TEST
 //ALL(n)
 //ONLYONE

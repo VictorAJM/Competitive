@@ -1,3 +1,11 @@
+// Problem: F. Array Stabilization (AND version)
+// Contest: Codeforces - Codeforces Round #744 (Div. 3)
+// URL: https://codeforces.com/contest/1579/problem/F
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 
 // Hasta donde tope
 
@@ -35,15 +43,35 @@ typedef pair<ll,ll> l2;
 typedef long double ld;
 
 const int mod=0;
-const int N=0;
+const int N=1e6+5;
 const ld EPS = 1e-9;
-
+int n,d,a[N],res[N];
+bool s[N];
 void solve(int Case)
 {
-
+	cin >> n >> d;
+	forn(i,0,n) cin >> a[i];
+	forn(i,0,n) s[i] = 0;
+	queue<i2> q;
+	forn(i,0,n) if (a[i] == 0) q.push({i,0});
+	wh (!q.empty()) {
+		i2 x = q.front();
+		q.pop();
+		if (!s[x.F]){ 
+		s[x.F] = 1;
+		res[x.F] = x.S;
+		x.S++;
+		x.F += d;
+		x.F %= n;
+		q.push(x); }
+	} 
+	forn(i,0,n) if (!s[i]) {cout << "-1\n"; re;}
+	int x=0;
+	forn(i,0,n) x = max(x,res[i]);
+	cout << x << "\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(TEST);
 //TEST
 //ALL(n)
 //ONLYONE

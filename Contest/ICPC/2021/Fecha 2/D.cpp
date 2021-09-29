@@ -37,13 +37,38 @@ typedef long double ld;
 const int mod=0;
 const int N=0;
 const ld EPS = 1e-9;
-
+ll c,r,s;
+ll cuanto(ll a,ll b,ll d)
+{
+	ll k ;
+	b %= d;
+	k = b;
+	if (a + b <= d) return 0;
+	else {
+		if (k>0) a -= d - k;
+		a += d-1;
+		return a/d;
+	}
+}
 void solve(int Case)
 {
-
+	cin >> c >> r >> s;
+	ll p = (r+c+s-1);
+	p /= s;
+	
+	ll t = r+s-1;
+	t /= s;
+	
+	p -= t;
+		cout << p << " ";
+		
+	ll q = (r+c+s-1);
+	q /= s;
+	if (r >= q) cout << "0\n";
+	else cout << q-r<<"\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(TEST);
 //TEST
 //ALL(n)
 //ONLYONE

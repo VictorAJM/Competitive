@@ -1,5 +1,10 @@
-
-// Hasta donde tope
+// Problem: A. Regular Bracket Sequences
+// Contest: Codeforces - Educational Codeforces Round 114 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1574/problem/A
+// Memory Limit: 512 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
 
 #include <bits/stdc++.h>
 
@@ -23,7 +28,6 @@
 #define ALL(n) int Case=0; wh (cin >> n) solve(++Case);
 #define ONLYONE int Case=0; solve(++Case);
 
-#define TACOSDECHASKA(n) int main() {fast_io; n; return 0;}
 using namespace std;
 
 typedef long long ll;
@@ -38,12 +42,24 @@ const int mod=0;
 const int N=0;
 const ld EPS = 1e-9;
 
+int n;
+
 void solve(int Case)
 {
-
+    cin >> n;
+    forn(i,0,n) {
+    	forn(j,0,i) cout << "(";
+    	rofn(j,n-i,0) cout << "()";
+    	forn(j,0,i) cout << ")";
+    	cout << "\n";
+    }
 }
 
-TACOSDECHASKA();
-//TEST
-//ALL(n)
-//ONLYONE
+int main()
+{
+    fast_io;
+    // ONLYONE
+    TEST;
+    // ALL(n);
+    return 0;
+}

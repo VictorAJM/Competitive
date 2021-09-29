@@ -35,15 +35,47 @@ typedef pair<ll,ll> l2;
 typedef long double ld;
 
 const int mod=0;
-const int N=0;
+const int N=1005;
 const ld EPS = 1e-9;
-
+int n,m;
+char a[N][N];
+vii p[200];
+int dp[N][N],z;
+void check(i2 u)
+{
+	int x = u.F; int y = u.S;
+	if (x > 0 && y > 0) if (a[x-1][y-1] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x-1][y-1]+1);
+		if (x > 0 && y < m-1) if (a[x-1][y+1] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x-1][y+1]+1);
+		if (x > 0 ) if (a[x-1][y] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x-1][y]+1);
+	
+		if ( y > 0) if (a[x][y-1] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x][y-1]+1);
+			if ( y < m-1) if (a[x][y+1] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x][y+1]+1);
+	
+		if (x < n-1 && y > 0) if (a[x+1][y-1] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x+1][y-1]+1);
+		if (x < n-1 && y < m-1) if (a[x+1][y+1] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x+1][y+1]+1);
+		if (x < n-1 ) if (a[x+1][y] == a[x][y]+1) 
+	dp[x][y] = max(dp[x][y],dp[x+1][y]+1);
+	z = max(z,dp[x][y]);
+	re;
+	
+}
 void solve(int Case)
 {
-
+	cin >> n >> m;
+	forn(i,0,n) forn(j,0,m) cin >> a[i][j];
+	forn(i,0,n) forn(j,0,m) p[a[i][j]-'A'].pb({i,j});
+	rofe(i,'Z','A') for(i2 u : p[i-'A']) check(u);
+	cout << z+1 << "\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(ONLYONE);
 //TEST
 //ALL(n)
 //ONLYONE

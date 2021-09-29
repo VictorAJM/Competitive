@@ -40,7 +40,12 @@ const ld EPS = 1e-9;
 
 void solve(int Case)
 {
-
+	for (int i=1;i<=8;i*=2) {
+		for (int j=0;j<8/i;j++) {
+			for (int k=0;k<
+)
+		}
+	}
 }
 
 TACOSDECHASKA();

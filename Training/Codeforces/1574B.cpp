@@ -1,5 +1,10 @@
-
-// Hasta donde tope
+// Problem: B. Combinatorics Homework
+// Contest: Codeforces - Educational Codeforces Round 114 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1574/problem/B
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
 
 #include <bits/stdc++.h>
 
@@ -15,15 +20,12 @@
 #define mset(d,val) memset(d,val,sizeof(d))
 #define forn(i,a,b) for(int i=(a);i<(b);i++)
 #define fore(i,a,b) for(int i=(a);i<=(b);i++)
-#define rofn(i,a,b) for (int i=(a);i>(b);i--) 
-#define rofe(i,a,b) for (int i=(a);i>=(b);i--)
 #define setp(x,a) cout<<fixed<<setprecision(x)<<a
 
 #define TEST int tt,Case=0; cin >> tt; wh (tt--) solve(++Case); 
 #define ALL(n) int Case=0; wh (cin >> n) solve(++Case);
 #define ONLYONE int Case=0; solve(++Case);
 
-#define TACOSDECHASKA(n) int main() {fast_io; n; return 0;}
 using namespace std;
 
 typedef long long ll;
@@ -38,12 +40,33 @@ const int mod=0;
 const int N=0;
 const ld EPS = 1e-9;
 
+int n,a,b,c,d;
+
 void solve(int Case)
 {
-
+    cin >> a >> b >> c >> d;
+    n = a+b+c-3;
+    if (d > n) { cout << "NO\n"; re;}
+    int x = min(min(a,b),c);
+    
+    if (b<c) swap(b,c);
+    if (a<b) swap(a,b);
+    if (b<c) swap(b,c);
+    watch(a);
+	watch(b);
+	watch(c);
+    if (a > b+c) {
+    	if (d < a-b-c-1) { cout << "NO\n"; re;}
+    }
+    cout << "YES\n";
+    re;
 }
 
-TACOSDECHASKA();
-//TEST
-//ALL(n)
-//ONLYONE
+int main()
+{
+    fast_io;
+    // ONLYONE
+    TEST;
+    // ALL(n);
+    return 0;
+}

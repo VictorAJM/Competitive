@@ -1,3 +1,11 @@
+// Problem: G. Minimal Coverage
+// Contest: Codeforces - Codeforces Round #744 (Div. 3)
+// URL: https://codeforces.com/contest/1579/problem/G
+// Memory Limit: 256 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 
 // Hasta donde tope
 
@@ -35,15 +43,48 @@ typedef pair<ll,ll> l2;
 typedef long double ld;
 
 const int mod=0;
-const int N=0;
+const int N=2e5+54;
 const ld EPS = 1e-9;
-
+int n,a[N],f[N];
+void add(int u,int m)
+{
+	wh (u <= m) {
+		f[u]++;
+		u += u&(-u);
+	}
+	re;
+}
+int get(int u) 
+{
+	int r = 0;
+	wh (u) {
+		r += f[u];
+		u -= u&(-u);
+	}
+	re r;
+}
 void solve(int Case)
 {
-
+	cin >> n;
+	forn(i,0,n) cin >> a[i];
+	map<int,int> h;
+	int q=1; 
+	set<int> s;
+	forn(i,0,n) s.insert(a[i]);
+	for (int u : s) h[u] = q++;
+	forn(i,0,n) a[i] = h[a[i]];
+	fore(i,0,q) f[i] = 0;
+	ll cnt = 0;
+	forn(i,0,n) {
+		int x = get(a[i]-1);
+		int y = get(q) - get(a[i]);
+		add(a[i],q);
+		cnt += min(x,y);
+	}
+	cout << cnt << "\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(TEST);
 //TEST
 //ALL(n)
 //ONLYONE

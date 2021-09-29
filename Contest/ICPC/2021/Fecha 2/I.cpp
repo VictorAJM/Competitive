@@ -37,13 +37,28 @@ typedef long double ld;
 const int mod=0;
 const int N=0;
 const ld EPS = 1e-9;
-
+int n;
+int P(int u)
+{
+	int k = 1;
+	wh (u) {
+		k *= u%10;
+		u /= 10;
+	}
+	re k;
+}
 void solve(int Case)
 {
-
+	cin >> n;
+	int cnt = 0;
+	while (n > 9) {
+		n = P(n);
+		cnt++;
+	}
+	cout << cnt << "\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(TEST);
 //TEST
 //ALL(n)
 //ONLYONE

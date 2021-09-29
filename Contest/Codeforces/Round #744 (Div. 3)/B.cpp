@@ -1,3 +1,11 @@
+// Problem: B. Shifting Sort
+// Contest: Codeforces - Codeforces Round #744 (Div. 3)
+// URL: https://codeforces.com/contest/1579/problem/B
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 
 // Hasta donde tope
 
@@ -33,17 +41,33 @@ typedef vector<i2> vii;
 typedef vector<ll> vl;
 typedef pair<ll,ll> l2;
 typedef long double ld;
-
+typedef pair<i2,int> i3;
+typedef vector<i3> vi3;
 const int mod=0;
-const int N=0;
+const int N=55;
 const ld EPS = 1e-9;
-
+int n,a[N],b[N];
 void solve(int Case)
 {
-
+	cin >> n;
+	vi3 res;
+	forn(i,0,n) cin >> a[i];
+	forn(i,0,n) b[i] = a[i];
+	sort(b,b+n);
+	rofn(i,n-1,0) {
+		if (a[i] != b[i]) {
+			int p = i;
+			wh (a[p] != b[i]) p--;
+			res.pb({{p+1,i+1},1});
+			forn(j,p,i) swap(a[j],a[j+1]);
+		}
+	}
+	cout << sz(res) << "\n";
+	for (auto x : res) cout << x.F.F << " "<<x.F.S << " "<<x.S<<"\n";
+	re;
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(TEST);
 //TEST
 //ALL(n)
 //ONLYONE

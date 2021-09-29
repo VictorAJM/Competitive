@@ -1,3 +1,11 @@
+// Problem: 13896. La nueva telefonia
+// Contest: omegaUp
+// URL: https://omegaup.com/arena/problem/La-nueva-telefonia/
+// Memory Limit: 32 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 
 // Hasta donde tope
 
@@ -40,10 +48,15 @@ const ld EPS = 1e-9;
 
 void solve(int Case)
 {
-
+	string n;
+	cin >> n;
+	if (sz(n) == 10) {
+		if ((n[9]-'0')%2==0) cout << "SIM gratis :)\n";
+		else cout << "F mi pana :(\n";
+	} else cout << "Numero incorrecto\n";
 }
 
-TACOSDECHASKA();
+TACOSDECHASKA(ONLYONE);
 //TEST
 //ALL(n)
 //ONLYONE
