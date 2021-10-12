@@ -1,3 +1,11 @@
+// Problem: Word Combinations
+// Contest: CSES - CSES Problem Set
+// URL: https://cses.fi/problemset/task/1731
+// Memory Limit: 512 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 
 // Hasta donde tope
 
@@ -12,17 +20,24 @@
 #define sz(x) (int)(x).size()
 #define all(x) begin(x), end(x)
 #define watch(x) cerr<<(#x)<<"="<<(x)<<'\n'
+#define mset(d,val) memset(d,val,sizeof(d))
 #define forn(i,a,b) for(int i=(a);i<(b);i++)
 #define fore(i,a,b) for(int i=(a);i<=(b);i++)
 #define rofn(i,a,b) for (int i=(a);i>(b);i--) 
 #define rofe(i,a,b) for (int i=(a);i>=(b);i--)
+#define setp(x,a) cout<<fixed<<setprecision(x)<<a
 
+#define TEST int tt,Case=0; cin >> tt; wh (tt--) solve(++Case); 
+#define ALL(n) int Case=0; wh (cin >> n) solve(++Case);
+#define ONLYONE int Case=0; solve(++Case);
+
+#define TACOSDECHASKA(n) int main() {fast_io; n; return 0;}
 using namespace std;
 
 typedef long long ll;
 typedef pair<int,int> i2;
 typedef vector<int> vi;
-typedef vector<i2> vi2;
+typedef vector<i2> vii;
 typedef vector<ll> vl;
 typedef pair<ll,ll> l2;
 typedef long double ld;
@@ -31,20 +46,12 @@ const int mod=0;
 const int N=0;
 const ld EPS = 1e-9;
 
-void precalc()
-{
-
-}
 void solve(int Case)
 {
 
 }
-int main()
-{
-    fast_io;
-    precalc();
-    int tt = 1, Case = 0;
-    // cin >> tt;
-    while (tt--) solve(++Case);
-    return 0;
-}
+
+TACOSDECHASKA();
+//TEST
+//ALL(n)
+//ONLYONE
