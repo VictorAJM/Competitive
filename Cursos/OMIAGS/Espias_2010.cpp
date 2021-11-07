@@ -30,7 +30,7 @@ void dfs(int nodo) // con esta funcion haremos la busqueda para calcular la resp
     tiempo++; 
     int siguiente = apunta[nodo]; 
     if (estado[siguiente] == 0) {// el siguiente nodo no ha sido visitado
-        dfs(siguiente); // calculamos la l  ongitud del siguiente nodo
+        // dfs(siguiente); // calculamos la l  ongitud del siguiente nodo
         if (momento[nodo] >= tiempoCiclo) { // si el momento del nodo actual es mayor a tiempoCiclo,
             longitud[nodo] = tamanoCiclo;   // este nodo pertene al ciclo
         } else { // en caso que no, tomamos la respuesta del siguiente nodo y le sumamos el nodo actual

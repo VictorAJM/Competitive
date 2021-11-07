@@ -1,58 +1,84 @@
-#include <stdio.h>
-#include <algorithm>
-using namespace std;
-int N,q;
-char B[2000000];
-long long C,D,M,L;
-int K(int w)
-{
-    D=0;
-    while (B[w]=='1') {
-        D++;
-        w++;
-    }
-    return D+1;
-}
-int J(int w)
-{
-    D=1;
-    while (B[w]=='0') {
-        D++;
-        w++;
-    }
-    if (w==N-1) {
-        D++;
-    }
-    return D;
-}
-int main()
-{
-    scanf("%d",&N);
-    scanf("%c",&B[0]);
-    for (int i=0;i<N;i++) scanf("%c",&B[i]);
-    for (int i=0;i<N/2;i++) swap(B[i],B[N-1-i]);
 
-    while (q<N-1) {
-        if (B[q]=='0') {
-            C++;
-            q++;
-        } else {
-            M=K(q+1);
-            L=J(q+1);
-            if (M>L) {
-                D=q;
-                while (B[D]=='1') {
-                    B[D]='0';
-                    D++;
-                }
-                B[D]='1';
-                if (D>=N) N++;
-            } else {
-                B[q]='0';
-            }
-            C++;
-        }
+#include <bits/stdc++.h>
+#define usar using
+#define nombreespacio namespace
+#define entero int
+#define largo long
+#define caracter char
+#define principal main
+#define lee cin
+#define imprime cout
+#define regresa return
+#define para for
+#define si if
+#define mientras while
+#define hacer do
+#define boleano bool
+#define rompe break
+#define doble double
+#define continuar continue
+#define tamDe sizeof
+#define sinsigno unsigned 
+#define constante const
+#define sino else
+#define corto short
+#define Estructura struct
+#define Cola queue
+#define Pila stack
+#define ColaDePrioridad  priority_queue
+#define Par pair
+#define primero first
+#define segundo second
+#define empuja push
+#define quita pop
+#define atras back
+#define empujaAtras push_back
+#define frente front
+#define empujaFrente push_front
+#define ordena sort
+#define siguientePermutacion next_permutation
+#define intercambia swap
+#define estandar std
+#define inicio begin
+#define fin end
+#define rInicio rbegin
+#define rFin rend
+#define todo(x) x.inicio(),x.fin()
+#define todoReversa(x) x.rInicio(),x.rFin()
+#define tupla tuple
+#define mapa map
+#define lista list
+#define conjunto set
+#define BiCola deque
+#define tama size
+#define tam(x) (entero)x.tama()
+#define plantilla template
+#define operador operator
+
+usar nombreespacio estandar;
+
+entero principal()
+{   
+    entero n;
+    Par<entero,entero> par[10003];
+    Cola<entero> cola[1003];
+    lee >> n;
+    para (entero i = 0 ; i < n ; i++){
+        entero a,b;
+        lee >> a >> b;
+        par[i].primero = a;
+        par[i].segundo = b;
     }
-    printf("%lld",C);
-    return 0;
+    para (entero i=0;i<n;i++) {
+        entero a,b,c;
+        lee >> a >> b >> c;
+        cola[i].empuja(a);
+        cola[i].empuja(b);
+        si (b==0) cola[i].quita();
+        cola[i].empuja(c);
+    }
+    regresa 0;
 }
+
+
+
