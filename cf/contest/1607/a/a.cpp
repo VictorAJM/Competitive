@@ -39,14 +39,21 @@ void precalc()
 }
 void solve(int Case)
 {
-
+    string s;
+    string b;
+    int res = 0;
+    int k[300]; 
+    cin >> b >> s;
+    for (int i=0;i<26;i++) k[b[i]] = i;
+    for (int i=0;i<s.size()-1;i++) res += abs(k[s[i]] - k[s[i+1]]);
+    cout << res << "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

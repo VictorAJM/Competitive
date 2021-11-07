@@ -32,21 +32,26 @@ typedef vector<int> vi;
 
 const int mod=0;
 const int N=0;
-
+string s;
 void precalc()
 {
 
 }
 void solve(int Case)
 {
+	cin >> s;
+	char u = *min_element(s.begin(),s.end());
+	bool t = true;
+	string a;
 
+    cout << s <<  "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

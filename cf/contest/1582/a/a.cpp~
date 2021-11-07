@@ -37,16 +37,19 @@ void precalc()
 {
 
 }
+int a,b,c;
 void solve(int Case)
 {
-
+    cin >> a >> b >> c;
+    int x = a + b+b + c*3;
+    cout << x%2 << "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

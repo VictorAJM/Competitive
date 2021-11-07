@@ -39,14 +39,22 @@ void precalc()
 }
 void solve(int Case)
 {
-
+    ll x,y;
+    cin >> x >> y;
+    ll z = y/4; z *= 4;
+    y %= 4;
+    for (int i=1;i<=y;i++) {
+        if (x%2==1) x += i+z;
+        else x -= i+z;
+    }
+    cout << x << "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

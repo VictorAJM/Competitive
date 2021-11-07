@@ -39,7 +39,11 @@ void precalc()
 }
 void solve(int Case)
 {
-
+	cin >> n;
+	for (int i=1;i<=n;i++) cin >> a[i];
+	for (int i=1;i<=n;i++) cin >> b[i];
+	for (int i=1;i<=n;i++) if (a[i] == i) vs[i] = true;
+	for (int i=1;i<=n;i++) d[i] = i + b[i];
 }
 int main()
 {

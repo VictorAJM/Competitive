@@ -39,14 +39,26 @@ void precalc()
 }
 void solve(int Case)
 {
-
+    string s;
+    cin >> s;
+    int x,y; x = y = 0;
+    int n = s.size() ;
+    for (int i=0;i<n-1;i++) {
+        if (s[i] == 'a' && s[i+1]=='b') x++;
+        if (s[i] == 'b' && s[i+1]=='a') y++;
+    }
+    if (x == y) cout << s<<"\n";
+    else {
+        s[n-1] = (s[n-1] == 'a' ? 'b' : 'a');
+        cout << s << " \n";
+    }
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

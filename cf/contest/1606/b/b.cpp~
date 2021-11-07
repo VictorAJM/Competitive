@@ -39,14 +39,32 @@ void precalc()
 }
 void solve(int Case)
 {
-
+    ll n,k;
+    cin >> n >> k;
+    n--;
+    if (n==0) {
+        cout << "0\n";
+        return;
+    }
+    int cnt = 0;
+    ll i=1;
+    for (i=1;i<=k;i=i+i) {
+        if (n<=i) {
+            cout << cnt <<"\n";
+            return;
+        } else {
+            n -= i;
+            cnt++;
+        }
+    }
+    cout << (n+k-1)/k + cnt << "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

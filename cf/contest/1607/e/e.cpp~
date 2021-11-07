@@ -37,16 +37,44 @@ void precalc()
 {
 
 }
+int n,m;
+string s;
 void solve(int Case)
 {
-
+    cin >> n >> m;
+    cin >> s;
+    int x,y,X,Y; x=y=X=Y=0;
+    int p,q; p = q = 0;
+    for (int i=0;i<s.size();i++) {
+        int a,b,c,d;
+        a = x; b = y; c = X; d = Y;
+        if (s[i] == 'R') {
+            p++;
+            X = max(X,p);
+        }  else if (s[i] == 'L') {
+            p--;
+            x = min(x,p);
+        } else if (s[i] == 'D') {
+            q++;
+            Y = max(Y,q);
+        } else {
+            q--;
+            y = min(y,q);
+        }
+        if (X-x >= m || Y-y >= n) {
+            i = s.size();
+cout << abs(b)+1 << " " << abs(a) + 1 << "\n";
+            return;
+        } 
+    }
+    cout << abs(y)+1 << " " << abs(x) + 1 << "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

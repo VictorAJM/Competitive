@@ -31,22 +31,34 @@ typedef pair<int,int> i2;
 typedef vector<int> vi;
 
 const int mod=0;
-const int N=0;
-
+const int N=2e5+6;
+int n,a[N],b[N];
 void precalc()
 {
 
 }
 void solve(int Case)
 {
-
+	cin >> n;
+	for (int i=0;i<n;i++) cin >> a[i];
+	int hi = 0;
+	for (int j=0;j<30;j++) b[j] = 0;
+	for (int i=0;i<n;i++) {
+		if (a[i] == 0 ) hi++;
+		for (int j=0;j<30;j++) if (((1<<j)&a[i]) > 0) b[j]++;
+	}
+	int x;
+	x = *max_element(b,b+30);
+	for (int j=0;j<30;j++) if (b[j] > 0) x = __gcd(b[j],x);
+	for (int i=1;i<=n;i++) if (x%i==0 || hi == n) cout << i << " " ;
+	cout << "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

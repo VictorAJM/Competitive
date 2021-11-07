@@ -23,7 +23,7 @@
 #define fore(i,a,b) for(int i=(a);i<=(b);i++)
 #define rofn(i,a,b) for (int i=(a);i>(b);i--) 
 #define rofe(i,a,b) for (int i=(a);i>=(b);i--)
-
+#define pb push_back
 using namespace std;
 
 typedef long long ll;
@@ -31,22 +31,52 @@ typedef pair<int,int> i2;
 typedef vector<int> vi;
 
 const int mod=0;
-const int N=0;
+const int N=2e5+5;
 
 void precalc()
 {
 
 }
+int n,a[N];
+string s;
+vector<int> q,w;
 void solve(int Case)
 {
-
+    cin >> n;
+    for (int i=0;i<n;i++) cin >> a[i];
+    cin >> s;
+    q.clear(); w.clear();
+    for (int i=0;i<n;i++) {
+        if (s[i] == 'B') {
+            q.pb(a[i]);
+        } else {
+            w.pb(a[i]);
+        }
+    }
+    sort(all(q));
+    sort(all(w));
+    for (int i=0;i<q.size();i++) {
+        if (q[i]<=i) {
+            cout << "NO\n";
+            return;
+        }
+    }
+    int p=n;
+    for (int i=w.size()-1;i>=0;i--) {
+        if (w[i]>p) {
+            cout << "NO\n";
+            return;
+        }
+        p--;
+    }
+    cout << "YES\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

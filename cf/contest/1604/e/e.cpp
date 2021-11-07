@@ -30,23 +30,63 @@ typedef long long ll;
 typedef pair<int,int> i2;
 typedef vector<int> vi;
 
-const int mod=0;
-const int N=0;
-
+const int mod=998244353;
+const int N=2e5+5;
+int n,a[N];
 void precalc()
 {
 
 }
+ll h(ll u, ll v)
+{
+    ll aux = 0;
+    while (u > v*2) {
+        aux++;
+        u -= v;
+    }
+    aux++;
+    return aux;
+}
+ll g(ll u, ll v)
+{
+    while (u > v*2) {
+        u -= v;
+    }
+    return u/2;
+}
 void solve(int Case)
 {
-
+    cin >> n;
+    for (int i=0;i<n;i++) cin >> a[i];
+    ll ans = 0;
+    for (int i=0;i<n;i++) {
+        // here we check 
+        ll x = a[i];
+        ll res = 0;
+        for (int j=i-1;j>=0;j--)  {
+        if (a[j] > x) {
+            res += h(a[j],x);
+            x = g(a[j],x);
+            
+            ans += res;
+            ans %= mod;
+        } else {
+            x = a[j];
+            ans += res;
+            ans %= mod;
+        }        
+        cout <<res << " ";
+        } 
+        cout << "\n";
+    }
+    cout << ans << "\n";
 }
 int main()
 {
     fast_io;
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }

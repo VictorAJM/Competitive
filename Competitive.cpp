@@ -39,14 +39,15 @@ void precalc()
 }
 void solve(int Case)
 {
-
+    cout << "hola mundo";
 }
 int main()
 {
     fast_io;
+
     precalc();
     int tt = 1, Case = 0;
-    // cin >> tt;
+    cin >> tt;
     while (tt--) solve(++Case);
     return 0;
 }
